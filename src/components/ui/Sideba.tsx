@@ -68,7 +68,7 @@ const Navbar: React.FC = () => {
 
   return (
     <div
-      className={`hidden lg:flex h-screen lg:w-[20%] bg-blue-500 shadow top-16 flex-col fixed left-0 transition-transform sm:transform-none ${
+      className={`hidden lg:flex h-screen lg:w-[20%] bg-gray-800 shadow top-16 flex-col fixed left-0 transition-transform sm:transform-none ${
         isSidebarOpen ? 'transform-none' : '-translate-x-full'
       }`}
     >
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
             <motion.li
               key={link.id}
               className={`flex justify-between items-center p-3 mr-4 cursor-pointer hover:bg-white hover:text-gray-800
-                ${activeLinkId === link.id ? 'bg-white border-l-4 border-[#ffa03a]' : ''}
+                ${activeLinkId === link.id ? 'bg-white border-l-4 border-[#277c7a]' : ''}
                 rounded-tr-md rounded-br-md
               `}
               
@@ -98,12 +98,12 @@ const Navbar: React.FC = () => {
             >
               <Link
                 to={link.link}
-                className="flex items-center focus:outline-none focus:ring-2 focus:ring-white"
+                className="flex items-center focus:outline-none focus:ring-2 gap-4 focus:ring-white"
               >
-                <span className={`mr-2 ${activeLinkId === link.id ? 'text-[#ffa03a]' : 'text-gray-300'}`}>
+                <span className={`ml-3 ${activeLinkId === link.id ? 'text-[#277c7a]' : 'text-gray-300'}`}>
                   {link.icon}
                 </span>
-                <span className={` ${activeLinkId === link.id ? 'text-gray-800' : 'text-gray-300'}`}>{link.name}</span>
+                <span className={`font-bold text-base ${activeLinkId === link.id ? 'text-gray-800' : 'text-gray-300'}`}>{link.name}</span>
               </Link>
             </motion.li>
           ))}
