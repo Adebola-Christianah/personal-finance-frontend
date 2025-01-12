@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import RectIcon from '../assets/Union.svg';
-import ArrowUP from '../assets/Arrow 14.svg';
-import ArrowDown from '../assets/Arrow 14 (1).svg';
+import RectIcon from '../assets/Union.svg?react';
+import ArrowUP from '../assets/Arrow 14.svg?react';
+import ArrowDown from '../assets/Arrow 14 (1).svg?react';
 import DashboardCard from '@/components/ui/dashboardCard';
 import { AgCharts } from 'ag-charts-react';
 
 const Dashboard = () => {
-  const [chartOptions, setChartOptions] = useState({
+  const [chartOptions] = useState({
     title: {
       text: 'Money Flow',
     },
@@ -43,7 +43,7 @@ const Dashboard = () => {
           <DashboardCard
             percentage={0.29}
             amount="100,000"
-            icon={<img src={RectIcon} alt="icon" />}
+            icon=<RectIcon/>
             text="Total balance"
           />
         </motion.div>
@@ -52,7 +52,7 @@ const Dashboard = () => {
           <DashboardCard
             percentage={0.29}
             amount="100,000"
-            icon={<img src={ArrowUP} alt="icon" />}
+            icon=<ArrowUP/>
             text="Transaction Outflow"
           />
         </motion.div>
@@ -61,7 +61,7 @@ const Dashboard = () => {
           <DashboardCard
             percentage={0.29}
             amount="100,000"
-            icon={<img src={ArrowDown} alt="icon" />}
+            icon=<ArrowDown/>
             text="Transaction Inflow"
           />
         </motion.div>

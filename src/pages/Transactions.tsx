@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, ChangeEvent } from 'react';
 import AsyncSelect from 'react-select/async';
 import Faria from '../assets/fariah.png';
