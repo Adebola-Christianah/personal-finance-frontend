@@ -1,15 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useState } from "react";
 import { AgCharts } from "ag-charts-react";
 
 const DoughnutChart: React.FC = () => {
-  const [options, setOptions] = useState({
+  const [options] = useState<any>({
+    // @ts-ignore
     series: [
       {
         type: "donut",
         angleKey: "amount",
         innerRadiusRatio: 0.6,
         innerLabels: [
-          { text: "₦500", fontWeight: "bold", fontSize: 24, color:'#1f2937' },
+          { text: "₦500", fontWeight: "bold", fontSize: 24, color: '#1f2937' },
           { text: "of ₦849,515.00", spacing: 4, fontSize: 12, color: "#4b5563" },
         ],
         innerCircle: { fill: "#fff" },
@@ -28,7 +31,7 @@ const DoughnutChart: React.FC = () => {
   return (
     <AgCharts 
       options={options} 
-      className="relative z-10" // Lower than modal overlay
+      className="relative z-10" 
       style={{ position: 'relative', zIndex: 10 }}
     />
   );

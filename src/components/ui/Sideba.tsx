@@ -5,12 +5,12 @@ import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { Bell, MessageCircle, Settings, Activity, Menu, X, ChartNoAxesCombined } from 'lucide-react';
 import {
-  ArrowFatLinesLeft,
+  // ArrowFatLinesLeft,
   ArrowsDownUp,
   ChartDonut,
   House,
   Jar,
-  Receipt,
+  // Receipt,
 } from '../../assets/icons.tsx';
 
 interface LinkItem {
@@ -49,12 +49,12 @@ const Navbar: React.FC = () => {
       icon: <Jar />,
       link: '/pots',
     },
-    {
-      id: 4,
-      name: 'Recurring bills',
-      icon: <Receipt />,
-      link: '/recurring-bills',
-    },
+    // {
+    //   id: 4,
+    //   name: 'Recurring bills',
+    //   icon: <Receipt />,
+    //   link: '/recurring-bills',
+    // },
     {
       id: 5,
       name: 'Stats',

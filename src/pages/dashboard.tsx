@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import RectIcon from '../assets/Union.svg?react';
@@ -5,9 +6,26 @@ import ArrowUP from '../assets/Arrow 14.svg?react';
 import ArrowDown from '../assets/Arrow 14 (1).svg?react';
 import DashboardCard from '@/components/ui/dashboardCard';
 import { AgCharts } from 'ag-charts-react';
+interface ChartOptions {
+  title: {
+    text: string; // Title of the chart
+  };
+  data: {
+    month: string; // Month name (e.g., "Jan", "Feb")
+    Inflow: number; // Inflow amount
+    Outflow: number; // Outflow amount
+  }[];
+  series: {
+    type: 'bar' | 'line' | 'scatter' | 'area'; // Type of series (e.g., bar chart)
+    xKey: string; // Key for x-axis (e.g., "month")
+    yKey: string; // Key for y-axis (e.g., "Outflow" or "Inflow")
+    yName: string; // Name for y-axis (e.g., "Outflow" or "Inflow")
+  }[];
+}
+
 
 const Dashboard = () => {
-  const [chartOptions] = useState({
+  const [chartOptions] = useState<ChartOptions>({
     title: {
       text: 'Money Flow',
     },
@@ -25,8 +43,18 @@ const Dashboard = () => {
       { month: 'Nov', Inflow: 128000, Outflow: 200000 },
     ],
     series: [
-      { type: 'bar', xKey: 'month', yKey: 'Outflow' },
-      { type: 'bar', xKey: 'month', yKey: 'Inflow' },
+      {
+        type: 'bar',
+        xKey: 'month',
+        yKey: 'Outflow',
+        yName: 'Outflow',
+      },
+      {
+        type: 'bar',
+        xKey: 'month',
+        yKey: 'Inflow',
+        yName: 'Inflow',
+      },
     ],
   });
 
