@@ -1,11 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { TransactionProps } from './ui/TransactionComponent';
+import { TransactionItem } from './ui/TransactionComponent';
 
 interface TransactionCardProps {
   title: string;
   maxAmount: number;
   spentAmount: number;
-  latestSpending?: string;
+  latestSpending?:TransactionProps[];
   color?:string
 }
 
@@ -44,7 +46,7 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
       </div>
 
       {/* Progress Bar */}
-      <div className="h-4 bg-[#f8f5f1] rounded-full mb-2">
+      <div className="h-6 bg-[#f8f5f1] rounded-full mb-2">
         <motion.div
           className="h-full bg-gray-500 rounded-full"
           style={{ width: `${(spentAmount / maxAmount) * 100}%` }}
@@ -60,17 +62,26 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-        >
-          <div className="font-semibold text-gray-900">Spent</div>
-          <div className="text-gray-500">${spentAmount.toFixed(2)}</div>
+        ><div className="flex items-center gap-3">
+          <div className="h-11 w-1 rounded-xl" style={{backgroundColor:color?color:'#6b7280'}}></div>
+       <div className='h-full'>
+       <div className="text-gray-500 text-xs">Spent</div>
+       <div className=" font-semibold text-gray-900">${spentAmount.toFixed(2)}</div>
+       </div>
+        </div>
+          
         </motion.div>
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <div className="font-semibold text-gray-900">Free</div>
-          <div className="text-gray-500">${freeAmount.toFixed(2)}</div>
+          <div className="flex items-center gap-3">
+          <div className="h-11 w-1 rounded-xl" style={{backgroundColor:'#f8f5f1'}}></div>
+          <div className="h-full">  <div className="text-xs text-gray-500">Free</div>
+          <div className="font-semibold text-gray-900">${freeAmount.toFixed(2)}</div></div>
+          </div>
+        
         </motion.div>
       </div>
 
@@ -91,7 +102,9 @@ const TransactionCard: React.FC<TransactionCardProps> = ({
           </motion.span>
         </div>
         <p className="text-gray-500 text-sm text-center my-3">
-          {latestSpending || "You haven't made any spendings yet."}
+        {latestSpending?.map((transaction, index) => (
+      <TransactionItem key={index} {...transaction}  />
+    ))}
         </p>
       </motion.div>
     </motion.div>

@@ -11,11 +11,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, modalTitle }) 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex justify-center items-center ">
+    <div className="fixed z-20 inset-0 flex justify-center items-center ">
       {/* Background overlay for modal */}
       <div 
         onClick={onClose} 
-        className="absolute inset-0 bg-black bg-opacity-50 z-10" 
+        className="absolute inset-0 bg-black bg-opacity-50 z-40" 
       ></div>
 
       {/* Modal content */}

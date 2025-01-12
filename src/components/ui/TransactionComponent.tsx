@@ -2,7 +2,7 @@ import React from 'react';
 
 type TransactionType = 'Wig' | 'Laptop' | 'LG LCD';
 
-interface TransactionProps {
+export interface TransactionProps {
   type: TransactionType;
   amount: number;
   description: string;
@@ -22,7 +22,7 @@ const getTransactionStyle = (type: TransactionType) => {
   }
 };
 
-const TransactionItem: React.FC<TransactionProps> = ({ type, amount, description, date }) => {
+export const TransactionItem: React.FC<TransactionProps> = ({ type, amount, description, date }) => {
   const { icon, bgColor } = getTransactionStyle(type);
 
   return (

@@ -1,12 +1,14 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { motion } from 'framer-motion';
-
+import { Plus } from 'lucide-react';
+import Modal from '../components/ui/ModalComponent';
 interface PotCardProps {
   title: string;
   savedAmount: number;
   targetAmount: number;
   color: string;
 }
+import PageHeader from '@/components/ui/PageHeader';
 
 const PotDashboard: React.FC = () => {
   const data: PotCardProps[] = [
@@ -16,10 +18,32 @@ const PotDashboard: React.FC = () => {
     { title: 'Rainy Days', savedAmount: 0, targetAmount: 3000, color: '#f0ad4e' },
     { title: 'Travel', savedAmount: 0, targetAmount: 7000, color: '#6c757d' },
   ];
-
+  const [showModal, setShowModal] = useState(false);
   return (
     <div className="">
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 w-full max-w-screen-lg">
+        <Modal isOpen={showModal} onClose={() => setShowModal(false)} modalTitle='Add new pot'>
+        <div className="mt-4">
+          <label htmlFor="transactionName" className="text-gray-600 text-sm font-semibold mb-2 ">
+        Amount
+      </label>
+        <input
+          type="number"
+          id="transactionName"
+          placeholder="e.g 2000"
+          value=''
+        //   onChange={handleInputChange}
+          className="w-full rounded-lg border border-gray-300  px-3 py-2 focus:outline-none  focus:border-gray-800 focus:border-2"
+        />
+      </div>
+        <button
+            onClick={() => setShowModal(false)}
+            className="bg-gray-800 w-full text-white rounded-lg px-4 py-2 mt-4 h-12"
+          >
+            Close
+          </button>
+        </Modal>
+         <PageHeader icon={<Plus color="#fbf4f4" />} pageTitle="Pots" buttonText="New Pot"   onclick={() => setShowModal(true)}/>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 w-full ">
         {data.map((item, index) => (
           <motion.div
             key={index}
