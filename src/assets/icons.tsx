@@ -556,7 +556,9 @@ export function CaretRight(props: React.SVGProps<SVGSVGElement>) {
       </svg>
     );
   }
-  export function ShortLogo() {
+  export function ShortLogo(
+    
+  ) {
     return (
       <svg
         key="short-logo"

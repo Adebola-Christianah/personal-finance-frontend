@@ -67,7 +67,8 @@ const Navbar: React.FC = () => {
   const activeLinkId = links.find(link => link.link === location.pathname)?.id;
 
   return (
-    <div
+   <div>
+     <div
       className={`hidden lg:flex h-screen lg:w-[20%] bg-gray-800 shadow top-16 flex-col fixed left-0 transition-transform sm:transform-none ${
         isSidebarOpen ? 'transform-none' : '-translate-x-full'
       }`}
@@ -125,7 +126,20 @@ const Navbar: React.FC = () => {
           <Activity className="text-gray-300" />
         </button>
       </div>
+      
     </div>
+    <div className="lg:hidden fixed bottom-0 z-50 left-0 w-full bg-gray-800 border-t border-gray-700">
+        <div className="flex justify-around">
+          {links.map(link => (
+            <Link key={link.id} to={link.link} className="flex  flex-col items-center p-2 text-gray-300 hover:bg-gray-700">
+              <span className={`ml-3 ${activeLinkId === link.id ? 'text-[#277c7a]' : 'text-gray-300'}`}>{link.icon}</span>
+              
+              <span className={`text-xs ${activeLinkId === link.id ? 'text-[#277c7a]' : 'text-gray-300'}`}>{link.name}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+   </div>
   );
 };
 
