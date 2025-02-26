@@ -132,9 +132,8 @@ const Navbar: React.FC = () => {
         <div className="flex justify-around">
           {links.map(link => (
             <Link key={link.id} to={link.link} className="flex  flex-col items-center p-2 text-gray-300 hover:bg-gray-700">
-              <span className={`ml-3 ${activeLinkId === link.id ? 'text-[#277c7a]' : 'text-gray-300'}`}>{link.icon}</span>
-              
-              <span className={`text-xs ${activeLinkId === link.id ? 'text-[#277c7a]' : 'text-gray-300'}`}>{link.name}</span>
+              {link.icon}
+              <span className="text-xs">{link.name}</span>
             </Link>
           ))}
         </div>
